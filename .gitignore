@@ -1,0 +1,16 @@
+
+### macOS template
+# General
+.DS_Store
+.AppleDouble
+.LSOverride
+.idea
+.vscode
+
+### Go template
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
