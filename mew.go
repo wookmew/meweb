@@ -1,7 +1,6 @@
 package meweb
 
 import (
-	"log"
 	"net/http"
 	"strings"
 )
@@ -19,6 +18,12 @@ type Engine struct {
 	*RouterGroup
 	router *router
 	groups []*RouterGroup
+}
+
+func Default() *Engine {
+	engine := New()
+	engine.Use(Logger(), Recovery())
+	return engine
 }
 
 func New() *Engine {
@@ -41,7 +46,6 @@ func (group *RouterGroup) Group(prefix string) *RouterGroup {
 
 func (group *RouterGroup) addRoute(method string, path string, handler HandlerFunc) {
 	pattern := group.prefix + path
-	log.Printf("Route %4s - %s", method, pattern)
 	group.engine.router.addRoute(method, pattern, handler)
 }
 
